@@ -10,10 +10,53 @@ import java.util.Random;
 public class OneOfEachStats {
 	public static void main (String[] args) {
 		// Gets the two command-line arguments
-		int T = Integer.parseInt(args[0]);
+		int numOfFam = Integer.parseInt(args[0]);
 		int seed = Integer.parseInt(args[1]);
 		// Initailizes a random numbers generator with the given seed value
         Random generator = new Random(seed);  
+		int sumTotal = 0;
+		int sumTwo = 0;
+		int sumThree = 0;
+		int sumFourOrMore = 0;
+		for (int i = 0; i < numOfFam; i++) {
+            int sumOfOneFamily = 0;
+            int boys = 0;
+			int girls = 0;
+			while (boys == 0 || girls == 0){
+			 double kid = generator.nextDouble();
+			 if (kid > 0.5) {
+			 boys++;			
+			 } 
+			 else {
+			 girls++;
+			 }
+             sumOfOneFamily ++;	
+			}
+			sumTotal += sumOfOneFamily;	
+			if (sumOfOneFamily == 2) {
+			 sumTwo++;
+			}
+			else if (sumOfOneFamily == 3) {
+		     sumThree++;
+            }
+			else {
+			 sumFourOrMore++;
+		    }	
+		}
+		double average = (double) sumTotal / numOfFam;
+		System.out.println("Average: " + average + " children to get at least one of each gender.");
+		System.out.println("Number of families with 2 children: " + sumTwo);
+		System.out.println("Number of families with 3 children: " + sumThree);
+		System.out.println("Number of families with 4 or more children: " + sumFourOrMore );
+		if (sumTwo > sumThree && sumTwo > sumFourOrMore ) {
+		System.out.println("The most common number of children is 2.");			
+		}
+		else if (sumThree > sumTwo && sumThree > sumFourOrMore ) {
+		System.out.println("The most common number of children is 3.");			
+		}
+		else {
+		System.out.println("The most common number of children is 4 or more.");			
+		}
 		
 		//// In the previous version of this program, you used a statement like:
 		//// double rnd = Math.random();
