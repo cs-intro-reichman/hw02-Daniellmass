@@ -20,14 +20,15 @@ public class OneOfEachStats {
 		int sumFourOrMore = 0;
 		for (int i = 0; i < numOfFam; i++) {
             int sumOfOneFamily = 0;
-            String boyOrGirl = "";
-			while (boyOrGirl.indexOf("b") == -1 || boyOrGirl.indexOf("g") == -1){
+            int boys = 0;
+			int girls = 0;
+			while (boys == 0 || girls == 0){
 			 double kid = generator.nextDouble();
-			 if (kid > 0.5 ){
-			 boyOrGirl += "b ";				
+			 if (kid > 0.5) {
+			 boys++;			
 			 } 
 			 else {
-			 boyOrGirl += "g ";
+			 girls++;
 			 }
              sumOfOneFamily ++;	
 			}
